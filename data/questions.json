@@ -1,0 +1,32 @@
+{
+  "product": "hunting-license-exam-trainer",
+  "updatePolicy": "Alpha data is representative. Check source, topic coverage, answer, and rationale before expanding.",
+  "questions": [
+    {
+      "id": "hunt-law-001",
+      "topic": "法令",
+      "prompt": "法令に関する基本確認",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "A",
+      "rationale": "禁止区域と安全確認を優先する。"
+    },
+    {
+      "id": "hunt-id-003",
+      "topic": "鳥獣判別",
+      "prompt": "猟具に関する復習確認",
+      "choices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "C",
+      "rationale": "図版更新待ち。"
+    }
+  ]
+}
