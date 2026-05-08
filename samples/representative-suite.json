@@ -1,0 +1,87 @@
+{
+  "product": "hunting-license-exam-trainer",
+  "rank": 63,
+  "scenarios": [
+    {
+      "id": "happy-path",
+      "type": "happy-path",
+      "title": "法令の通常処理",
+      "inputs": {
+        "questionId": "hunt-law-001",
+        "answer": "A",
+        "topic": "法令",
+        "rationale": "禁止区域と安全確認を優先する。"
+      },
+      "expected": {
+        "status": "pass",
+        "accepted": 1,
+        "warnings": 0
+      }
+    },
+    {
+      "id": "missing-required",
+      "type": "missing-required",
+      "title": "answer不足時の停止",
+      "inputs": {
+        "questionId": "hunt-law-001",
+        "answer": "",
+        "topic": "法令",
+        "rationale": "禁止区域と安全確認を優先する。"
+      },
+      "expected": {
+        "status": "error",
+        "accepted": 0,
+        "warnings": 0
+      }
+    },
+    {
+      "id": "warning",
+      "type": "warning",
+      "title": "猟具の注意喚起",
+      "inputs": {
+        "questionId": "hunt-id-003",
+        "answer": "C",
+        "topic": "鳥獣判別",
+        "rationale": "図版更新待ち。"
+      },
+      "flags": [
+        "needsReview"
+      ],
+      "expected": {
+        "status": "warning",
+        "accepted": 1,
+        "warnings": 1
+      }
+    },
+    {
+      "id": "mixed-batch",
+      "type": "mixed-batch",
+      "title": "鳥獣判別を含む混在バッチ",
+      "items": [
+        {
+          "questionId": "hunt-law-001",
+          "answer": "A",
+          "topic": "法令",
+          "rationale": "禁止区域と安全確認を優先する。"
+        },
+        {
+          "questionId": "hunt-law-001",
+          "answer": "",
+          "topic": "法令",
+          "rationale": "禁止区域と安全確認を優先する。"
+        },
+        {
+          "questionId": "hunt-id-003",
+          "answer": "C",
+          "topic": "鳥獣判別",
+          "rationale": "図版更新待ち。"
+        }
+      ],
+      "expected": {
+        "status": "warning",
+        "accepted": 2,
+        "warnings": 2
+      }
+    }
+  ]
+}
