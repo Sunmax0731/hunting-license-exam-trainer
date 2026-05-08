@@ -5,12 +5,12 @@
     {
       "id": "happy-path",
       "type": "happy-path",
-      "title": "法令の通常処理",
+      "title": "狩猟免許試験問題トレーニングの通常フロー",
       "inputs": {
-        "questionId": "hunt-law-001",
-        "answer": "A",
-        "topic": "法令",
-        "rationale": "禁止区域と安全確認を優先する。"
+        "questionId": "hunt-001",
+        "selectedAnswer": "A",
+        "category": "法令",
+        "reviewMode": "normal"
       },
       "expected": {
         "status": "pass",
@@ -21,12 +21,12 @@
     {
       "id": "missing-required",
       "type": "missing-required",
-      "title": "answer不足時の停止",
+      "title": "questionId不足時の停止",
       "inputs": {
-        "questionId": "hunt-law-001",
-        "answer": "",
-        "topic": "法令",
-        "rationale": "禁止区域と安全確認を優先する。"
+        "questionId": "hunt-001",
+        "selectedAnswer": "",
+        "category": "法令",
+        "reviewMode": "normal"
       },
       "expected": {
         "status": "error",
@@ -37,12 +37,12 @@
     {
       "id": "warning",
       "type": "warning",
-      "title": "猟具の注意喚起",
+      "title": "教材更新確認が必要な問題",
       "inputs": {
-        "questionId": "hunt-id-003",
-        "answer": "C",
-        "topic": "鳥獣判別",
-        "rationale": "図版更新待ち。"
+        "questionId": "hunt-002",
+        "selectedAnswer": "C",
+        "category": "鳥獣識別",
+        "reviewMode": "stale-source"
       },
       "flags": [
         "needsReview"
@@ -56,25 +56,25 @@
     {
       "id": "mixed-batch",
       "type": "mixed-batch",
-      "title": "鳥獣判別を含む混在バッチ",
+      "title": "正常・不足・警告を含む混在バッチ",
       "items": [
         {
-          "questionId": "hunt-law-001",
-          "answer": "A",
-          "topic": "法令",
-          "rationale": "禁止区域と安全確認を優先する。"
+          "questionId": "hunt-001",
+          "selectedAnswer": "A",
+          "category": "法令",
+          "reviewMode": "normal"
         },
         {
-          "questionId": "hunt-law-001",
-          "answer": "",
-          "topic": "法令",
-          "rationale": "禁止区域と安全確認を優先する。"
+          "questionId": "hunt-001",
+          "selectedAnswer": "",
+          "category": "法令",
+          "reviewMode": "normal"
         },
         {
-          "questionId": "hunt-id-003",
-          "answer": "C",
-          "topic": "鳥獣判別",
-          "rationale": "図版更新待ち。"
+          "questionId": "hunt-002",
+          "selectedAnswer": "C",
+          "category": "鳥獣識別",
+          "reviewMode": "stale-source"
         }
       ],
       "expected": {

@@ -1,32 +1,32 @@
 {
   "product": "hunting-license-exam-trainer",
-  "updatePolicy": "Alpha data is representative. Check source, topic coverage, answer, and rationale before expanding.",
+  "note": "閉鎖アルファ用のサンプル問題です。公式資料との差分は手動更新で確認します。",
   "questions": [
     {
-      "id": "hunt-law-001",
-      "topic": "法令",
-      "prompt": "法令に関する基本確認",
+      "id": "hunt-001",
+      "category": "法令",
+      "prompt": "狩猟免許試験問題トレーニングの基礎確認サンプル",
       "choices": [
         "A",
         "B",
         "C",
         "D"
       ],
-      "correctAnswer": "A",
-      "rationale": "禁止区域と安全確認を優先する。"
+      "answer": "A",
+      "explanation": "採点と復習導線の検証を優先します。"
     },
     {
-      "id": "hunt-id-003",
-      "topic": "鳥獣判別",
-      "prompt": "猟具に関する復習確認",
+      "id": "hunt-002",
+      "category": "鳥獣識別",
+      "prompt": "狩猟免許試験問題トレーニングの更新確認サンプル",
       "choices": [
         "A",
         "B",
         "C",
         "D"
       ],
-      "correctAnswer": "C",
-      "rationale": "図版更新待ち。"
+      "answer": "C",
+      "explanation": "教材データは公式資料確認後に更新します。"
     }
   ]
 }

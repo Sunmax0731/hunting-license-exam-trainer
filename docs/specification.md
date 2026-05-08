@@ -1,17 +1,17 @@
 # 仕様
 
-対象: 狩猟免許試験問題トレーニング (Rank 63, EducationLearning No.6)
+- 名称: 狩猟免許試験問題トレーニング
+- Repo: hunting-license-exam-trainer
+- Closed alpha platform: GitHub Pages training app / GitHub Release教材
+- 主な公開先: GitHub Pages / GitHub Release
 
-| 入力 | 用途 |
-| questionId | 狩猟免許試験問題トレーニング の評価、表示、レポートに必要 |
-| answer | 狩猟免許試験問題トレーニング の評価、表示、レポートに必要 |
-| topic | 狩猟免許試験問題トレーニング の評価、表示、レポートに必要 |
-| rationale | 狩猟免許試験問題トレーニング の評価、表示、レポートに必要 |
+## 入力
 
-## 出力
+- `questionId`
+- `selectedAnswer`
+- `category`
+- `reviewMode`
 
-- `dist/validation-result.json`
-- `dist/web-smoke-result.json`
-- `docs/qcds-strict-metrics.json`
-- `docs/qcds-regression-baseline.json`
-- `dist/hunting-license-exam-trainer-docs.zip`
+## 主要機能
+
+代表シナリオ評価、Web表示、CLI評価、docs / QCDS / release evidence 生成。

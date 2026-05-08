@@ -6,48 +6,50 @@ export const product = {
   "score": 50,
   "ideaNo": 6,
   "ideaName": "狩猟免許試験問題トレーニング",
-  "field": "資格試験・狩猟免許",
+  "field": "資格試験トレーナー",
   "publicTarget": "GitHub Pages / GitHub Release",
-  "overview": "法令、猟具、鳥獣判別、安全管理、マナー、実技前提知識を問題演習で学ぶ。",
-  "problem": "法令、識別、安全知識が分かれ、苦手分野を復習しにくい。",
-  "differentiation": "暗記だけでなく、誤答理由、関連用語、実地で注意すべき判断まで復習カード化する。",
-  "audience": "狩猟免許の受験準備を分野別に進めたい学習者",
+  "platformScope": "GitHub Pages training app / GitHub Release教材",
+  "overview": "狩猟免許試験向けのサンプル問題、採点、復習デッキをまとめ、教材更新方針まで確認できる学習アプリ。",
+  "problem": "試験対策は問題の正確性と更新が重要で、アプリ実装だけでは学習品質を保証できない。",
+  "differentiation": "問題データ、採点結果、弱点復習、更新ポリシーを同じ検証対象に含める。",
+  "audience": "狩猟免許の学習者、教材作成者、模試運営者",
   "requiredInputs": [
     "questionId",
-    "answer",
-    "topic",
-    "rationale"
+    "selectedAnswer",
+    "category",
+    "reviewMode"
   ],
   "modules": [
+    "question-bank",
     "exam-engine",
     "review-deck",
-    "question-data",
-    "web-app"
+    "web-practice",
+    "content-validator"
   ],
-  "accent": "#35695b",
-  "secondary": "#c98a2c",
+  "accent": "#7c2d12",
+  "secondary": "#1c1917",
   "scenarioNouns": [
-    "法令",
-    "猟具",
-    "鳥獣判別"
+    "問題データ",
+    "採点",
+    "復習カード"
   ]
 };
 
 export function evaluateScenario(scenario) {
-  if (scenario.type === "mixed-batch") {
-    const results = (scenario.items || []).map((inputs, index) => evaluateScenario({ id: scenario.id + "-" + index, inputs, flags: index === 2 ? ["needsReview"] : [] }));
-    const accepted = results.filter((r) => r.status !== "error").length;
-    const warnings = results.filter((r) => r.status !== "pass").length;
-    return { id: scenario.id, status: warnings ? "warning" : "pass", accepted, warnings, missing: results.flatMap((r) => r.missing), score: warnings ? 78 : 96 };
+  if (scenario.type === 'mixed-batch') {
+    const results = (scenario.items || []).map((inputs, index) => evaluateScenario({ id: scenario.id + '-' + index, inputs, flags: index === 2 ? ['needsReview'] : [] }));
+    const accepted = results.filter((result) => result.status !== 'error').length;
+    const warnings = results.filter((result) => result.status !== 'pass').length;
+    return { id: scenario.id, status: warnings ? 'warning' : 'pass', accepted, warnings, missing: results.flatMap((result) => result.missing), score: warnings ? 78 : 96 };
   }
   const inputs = scenario.inputs || {};
-  const missing = product.requiredInputs.filter((key) => inputs[key] === undefined || inputs[key] === null || inputs[key] === "");
-  if (missing.length) return { id: scenario.id, status: "error", accepted: 0, warnings: 0, missing, score: 0 };
-  const risky = Object.values(inputs).some((v) => /stale|low|noisy|manual-lock|large-water-change|late-brake|unknown/i.test(String(v)));
-  const warnings = (scenario.flags || []).includes("needsReview") || risky ? 1 : 0;
-  return { id: scenario.id, status: warnings ? "warning" : "pass", accepted: 1, warnings, missing: [], score: warnings ? 86 : 96 };
+  const missing = product.requiredInputs.filter((key) => inputs[key] === undefined || inputs[key] === null || inputs[key] === '');
+  if (missing.length) return { id: scenario.id, status: 'error', accepted: 0, warnings: 0, missing, score: 0 };
+  const risky = Object.values(inputs).some((value) => /stale|low|noisy|manual-lock|large-water-change|late-brake|unknown|overflow|rush|storm|fatigue|unstable|crowded|high/i.test(String(value)));
+  const warnings = (scenario.flags || []).includes('needsReview') || risky ? 1 : 0;
+  return { id: scenario.id, status: warnings ? 'warning' : 'pass', accepted: 1, warnings, missing: [], score: warnings ? 86 : 96 };
 }
 
 export function summarizeProduct() {
-  return { name: product.ideaName, repo: product.repo, releaseTarget: product.publicTarget, responsibilities: product.modules, requiredInputs: product.requiredInputs };
+  return { name: product.ideaName, repo: product.repo, domain: product.domain, releaseTarget: product.publicTarget, platformScope: product.platformScope, responsibilities: product.modules, requiredInputs: product.requiredInputs };
 }
