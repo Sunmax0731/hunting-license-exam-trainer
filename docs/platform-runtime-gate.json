@@ -1,0 +1,13 @@
+{
+  "product": "hunting-license-exam-trainer",
+  "title": "狩猟免許試験問題トレーニング",
+  "domain": "EducationLearning",
+  "ideaNo": 6,
+  "platformType": "browser-web",
+  "expectedPublicTarget": "GitHub Pages / GitHub Release",
+  "browser": {
+    "evidence": "dist/web-smoke-result.json"
+  },
+  "android": null,
+  "evidence": "dist/platform-runtime-gate-result.json"
+}
